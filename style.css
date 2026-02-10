@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* 🌸 Light pink background */
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #ffd6e5; /* light pink */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center container */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🤍 White rounded rectangle in middle */
+.card {
+  background-color: #ffffff;
+  padding: 35px 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Question text */
+#question {
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/* Buttons layout */
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+/* 🌹 Dark pink / rose buttons */
+button {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* YES button */
+#yesBtn {
+  background-color: #d63384; /* dark rose */
+}
+
+/* NO button */
+#noBtn {
+  background-color: #c2255c; /* deeper pink */
+}
+
+/* Final troll screen */
+.final {
+  text-align: center;
+}
+
+.final img {
+  width: 260px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+/* Hide elements */
+.hidden {
+  display: none;
+}
