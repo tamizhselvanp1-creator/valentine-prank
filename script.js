@@ -6,13 +6,8 @@ const finalScreen = document.getElementById("finalScreen");
 let noCount = 0;
 const maxNo = 5;
 
-// Initial YES size (linear baseline)
-let yesWidth = 120;
-let yesHeight = 48;
-
-// Apply initial size
-yesBtn.style.width = yesWidth + "px";
-yesBtn.style.height = yesHeight + "px";
+// linear scale step (NOT exponential)
+const scaleStep = 0.25;
 
 // YES works anytime
 yesBtn.addEventListener("click", () => {
@@ -20,22 +15,20 @@ yesBtn.addEventListener("click", () => {
   finalScreen.classList.remove("hidden");
 });
 
-// NO logic (linear growth)
+// NO logic
 noBtn.addEventListener("click", () => {
   noCount++;
 
-  // Linear growth: SAME increment every time
+  // LINEAR growth (same increment every click)
   if (noCount < maxNo) {
-    yesWidth += 60;   // ← linear step (change if you want)
-    yesHeight += 20; // ← linear step
-
-    yesBtn.style.width = yesWidth + "px";
-    yesBtn.style.height = yesHeight + "px";
-    yesBtn.style.fontSize = "18px";
+    const scaleValue = 1 + noCount * scaleStep;
+    yesBtn.style.transform = `scale(${scaleValue})`;
   }
 
-  // 5th NO → YES takes over screen
+  // 5th NO → YES takes full screen
   if (noCount === maxNo) {
+    // remove from card layout
+    yesBtn.style.transform = "none";
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "0";
     yesBtn.style.left = "0";
@@ -43,8 +36,10 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.height = "100vh";
     yesBtn.style.fontSize = "42px";
     yesBtn.style.borderRadius = "0";
-    yesBtn.innerText = "YES 😈";
+    yesBtn.style.zIndex = "9999";
+    yesBtn.innerText = "YES 🥰";
 
+    // hide NO
     noBtn.style.display = "none";
   }
 });
