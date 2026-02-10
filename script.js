@@ -6,8 +6,9 @@ const finalScreen = document.getElementById("finalScreen");
 let noCount = 0;
 const maxNo = 5;
 
-// linear scale step (NOT exponential)
-const scaleStep = 2.5;
+// Added a smooth transition so the move and grow look fluid
+yesBtn.style.transition = "all 0.3s ease";
+noBtn.style.transition = "all 0.3s ease";
 
 // YES works anytime
 yesBtn.addEventListener("click", () => {
@@ -15,20 +16,21 @@ yesBtn.addEventListener("click", () => {
   finalScreen.classList.remove("hidden");
 });
 
-// NO logic
+// NO click logic
 noBtn.addEventListener("click", () => {
   noCount++;
 
-  // LINEAR growth (same increment every click)
+  // YES grows AND NO moves right (Clicks 1-4)
   if (noCount < maxNo) {
-    const scaleValue = 2 + noCount * scaleStep;
-    yesBtn.style.transform = `scale(${scaleValue})`;
+    // Grow the YES button
+    yesBtn.style.transform = `scale(${1 + noCount * 0.35})`;
+    
+    // Move the NO button to the right (40px per click)
+    noBtn.style.transform = `translateX(${noCount * 40}px)`;
   }
 
-  // 5th NO → YES takes full screen
+  // On 5th NO → YES covers entire screen
   if (noCount === maxNo) {
-    // remove from card layout
-    yesBtn.style.transform = "none";
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "0";
     yesBtn.style.left = "0";
@@ -36,13 +38,11 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.height = "100vh";
     yesBtn.style.fontSize = "42px";
     yesBtn.style.borderRadius = "0";
-    yesBtn.style.zIndex = "9999";
+    yesBtn.style.transform = "none";
     yesBtn.innerText = "YES 🥰";
+    yesBtn.style.zIndex = "9999";
 
-    // hide NO
+    // Hide NO button
     noBtn.style.display = "none";
   }
 });
-
-
-
