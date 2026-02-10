@@ -21,7 +21,7 @@ noBtn.addEventListener("click", () => {
 
   // LINEAR growth (same increment every click)
   if (noCount < maxNo) {
-    const scaleValue = 1 + noCount * scaleStep;
+    const scaleValue = 2 + noCount * scaleStep;
     yesBtn.style.transform = `scale(${scaleValue})`;
   }
 
@@ -37,10 +37,11 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.fontSize = "42px";
     yesBtn.style.borderRadius = "0";
     yesBtn.style.zIndex = "9999";
-    yesBtn.innerText = "YES 😈";
+    yesBtn.innerText = "YES 🥰";
 
     // hide NO
     noBtn.style.display = "none";
   }
 });
+
 
