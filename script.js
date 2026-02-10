@@ -50,8 +50,9 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.height = "100vh";
     yesBtn.style.borderRadius = "0";
     yesBtn.style.zIndex = "9999";
-    yesBtn.innerText = "YES 😈";
+    yesBtn.innerText = "YES 🥰";
 
     noBtn.style.display = "none";
   }
 });
+
