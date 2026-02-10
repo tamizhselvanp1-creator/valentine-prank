@@ -12,16 +12,16 @@ yesBtn.addEventListener("click", () => {
   finalScreen.classList.remove("hidden");
 });
 
-// NO logic
+// NO click logic
 noBtn.addEventListener("click", () => {
   noCount++;
 
-  // YES grows slowly (NO stays same size)
+  // YES grows only (NO + card stay same)
   if (noCount < maxNo) {
-    yesBtn.style.transform = `scale(${1 + noCount * 0.3})`;
+    yesBtn.style.transform = `scale(${1 + noCount * 0.35})`;
   }
 
-  // On 5th NO → YES takes over screen
+  // On 5th NO → YES covers entire screen
   if (noCount === maxNo) {
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "0";
@@ -33,7 +33,7 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.transform = "none";
     yesBtn.innerText = "YES 😈";
 
-    // Remove NO completely
+    // Hide NO button
     noBtn.style.display = "none";
   }
 });
