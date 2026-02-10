@@ -4,26 +4,10 @@ const card = document.getElementById("card");
 const finalScreen = document.getElementById("finalScreen");
 
 let noCount = 0;
-const totalSteps = 5; // 1–4 = grow, 5 = full screen
+const maxNo = 5;
 
-// Smooth + natural (not jumpy)
-yesBtn.style.transition = "width 0.35s linear, height 0.35s linear";
-
-// Initial YES size (real size on load)
-const startWidth = yesBtn.offsetWidth;
-const startHeight = yesBtn.offsetHeight;
-
-// Screen size
-const screenW = window.innerWidth;
-const screenH = window.innerHeight;
-
-// Target size at step 4 (≈75% of screen)
-const targetW75 = screenW * 0.75;
-const targetH75 = screenH * 0.75;
-
-// Linear step size (same increment every click)
-const widthStep = (targetW75 - startWidth) / 4;
-const heightStep = (targetH75 - startHeight) / 4;
+// linear scale step (NOT exponential)
+const scaleStep = 0.25;
 
 // YES works anytime
 yesBtn.addEventListener("click", () => {
@@ -31,27 +15,31 @@ yesBtn.addEventListener("click", () => {
   finalScreen.classList.remove("hidden");
 });
 
-// NO logic — TRUE linear, uniform growth
+// NO logic
 noBtn.addEventListener("click", () => {
   noCount++;
 
-  // Steps 1 → 4 : grow to 75%
-  if (noCount >= 1 && noCount <= 4) {
-    yesBtn.style.width = startWidth + widthStep * noCount + "px";
-    yesBtn.style.height = startHeight + heightStep * noCount + "px";
+  // LINEAR growth (same increment every click)
+  if (noCount < maxNo) {
+    const scaleValue = 1 + noCount * scaleStep;
+    yesBtn.style.transform = `scale(${scaleValue})`;
   }
 
-  // Step 5 : smoothly finish to full screen
-  if (noCount === 5) {
+  // 5th NO → YES takes full screen
+  if (noCount === maxNo) {
+    // remove from card layout
+    yesBtn.style.transform = "none";
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "0";
     yesBtn.style.left = "0";
     yesBtn.style.width = "100vw";
     yesBtn.style.height = "100vh";
+    yesBtn.style.fontSize = "42px";
     yesBtn.style.borderRadius = "0";
     yesBtn.style.zIndex = "9999";
-    yesBtn.innerText = "YES 🥰";
+    yesBtn.innerText = "YES 😈";
 
+    // hide NO
     noBtn.style.display = "none";
   }
 });
