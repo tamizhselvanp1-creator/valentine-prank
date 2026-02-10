@@ -3,7 +3,7 @@ const noBtn = document.getElementById("noBtn");
 const card = document.getElementById("card");
 const finalScreen = document.getElementById("finalScreen");
 
-let noCount = 1;
+let noCount = 2.5;
 const maxNo = 5;
 
 // Added a smooth transition so the move and grow look fluid
@@ -46,5 +46,6 @@ noBtn.addEventListener("click", () => {
     noBtn.style.display = "none";
   }
 });
+
 
 
