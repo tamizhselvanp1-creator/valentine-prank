@@ -7,7 +7,7 @@ let noCount = 0;
 const maxNo = 5;
 
 // linear scale step (NOT exponential)
-const scaleStep = 0.25;
+const scaleStep = 2.5;
 
 // YES works anytime
 yesBtn.addEventListener("click", () => {
@@ -43,5 +43,6 @@ noBtn.addEventListener("click", () => {
     noBtn.style.display = "none";
   }
 });
+
 
 
