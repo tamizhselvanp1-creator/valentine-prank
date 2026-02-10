@@ -4,7 +4,7 @@ const card = document.getElementById("card");
 const finalScreen = document.getElementById("finalScreen");
 
 let noCount = 2;
-const maxNo = 12;
+const maxNo = 14;
 
 // Added a smooth transition so the move and grow look fluid
 yesBtn.style.transition = "all 0.3s ease";
@@ -45,6 +45,7 @@ noBtn.addEventListener("click", () => {
     // Hide NO button
   }
 });
+
 
 
 
