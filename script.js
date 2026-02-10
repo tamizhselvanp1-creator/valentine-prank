@@ -6,22 +6,35 @@ const finalScreen = document.getElementById("finalScreen");
 let noCount = 0;
 const maxNo = 5;
 
+// Initial YES size (linear baseline)
+let yesWidth = 120;
+let yesHeight = 48;
+
+// Apply initial size
+yesBtn.style.width = yesWidth + "px";
+yesBtn.style.height = yesHeight + "px";
+
 // YES works anytime
 yesBtn.addEventListener("click", () => {
   card.style.display = "none";
   finalScreen.classList.remove("hidden");
 });
 
-// NO click logic
+// NO logic (linear growth)
 noBtn.addEventListener("click", () => {
   noCount++;
 
-  // YES grows only (NO + card stay same)
+  // Linear growth: SAME increment every time
   if (noCount < maxNo) {
-    yesBtn.style.transform = `scale(${1 + noCount * 0.35})`;
+    yesWidth += 60;   // ← linear step (change if you want)
+    yesHeight += 20; // ← linear step
+
+    yesBtn.style.width = yesWidth + "px";
+    yesBtn.style.height = yesHeight + "px";
+    yesBtn.style.fontSize = "18px";
   }
 
-  // On 5th NO → YES covers entire screen
+  // 5th NO → YES takes over screen
   if (noCount === maxNo) {
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "0";
@@ -30,10 +43,8 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.height = "100vh";
     yesBtn.style.fontSize = "42px";
     yesBtn.style.borderRadius = "0";
-    yesBtn.style.transform = "none";
     yesBtn.innerText = "YES 😈";
 
-    // Hide NO button
     noBtn.style.display = "none";
   }
 });
