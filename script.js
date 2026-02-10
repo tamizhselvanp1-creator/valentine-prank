@@ -3,8 +3,8 @@ const noBtn = document.getElementById("noBtn");
 const card = document.getElementById("card");
 const finalScreen = document.getElementById("finalScreen");
 
-let noCount = 3;
-const maxNo = 5;
+let noCount = 2;
+const maxNo = 7;
 
 // Added a smooth transition so the move and grow look fluid
 yesBtn.style.transition = "all 0.3s ease";
@@ -23,7 +23,7 @@ noBtn.addEventListener("click", () => {
   // YES grows AND NO moves right (Clicks 1-4)
   if (noCount < maxNo) {
     // Grow the YES button
-    yesBtn.style.transform = `scale(${1 + noCount * 0.35})`;
+    yesBtn.style.transform = `scale(${5 + noCount * 0.35})`;
     
     // Move the NO button to the right (40px per click)
     noBtn.style.transform = `translateX(${noCount * 40}px)`;
@@ -46,6 +46,7 @@ noBtn.addEventListener("click", () => {
     noBtn.style.display = "none";
   }
 });
+
 
 
 
