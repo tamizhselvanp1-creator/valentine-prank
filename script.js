@@ -23,7 +23,7 @@ noBtn.addEventListener("click", () => {
   // YES grows AND NO moves right (Clicks 1-4)
   if (noCount < maxNo) {
     // Grow the YES button
-    yesBtn.style.transform = `scale(${5 + noCount * 0.65})`;
+    yesBtn.style.transform = `scale(${5 + noCount * 0.95})`;
     
     // Move the NO button to the right (40px per click)
     noBtn.style.transform = `translateX(${noCount * 40}px)`;
@@ -45,6 +45,7 @@ noBtn.addEventListener("click", () => {
     // Hide NO button
   }
 });
+
 
 
 
