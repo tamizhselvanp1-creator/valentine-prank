@@ -43,8 +43,10 @@ noBtn.addEventListener("click", () => {
     yesBtn.style.zIndex = "9999";
 
     // Hide NO button
+    noBtn.style.display = "none";
   }
 });
+
 
 
 
